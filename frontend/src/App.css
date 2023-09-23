@@ -6,7 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px; /* Optional: Add some spacing between articles */
+    gap: 10px; 
 }
 
 .article {
