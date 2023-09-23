@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Optional: Add some spacing between articles */
+}
+
+.article {
+    width: calc(25% - 20px); /* 25% width for each article with 20px spacing */
+    border: 1px solid red;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
