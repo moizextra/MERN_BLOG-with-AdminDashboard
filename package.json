@@ -1,0 +1,23 @@
+{
+  "name": "mern_blog-admindashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/index.js",
+  "scripts": {
+    "dev": "nodemon backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulmoizsheraz/MERN_BLOG-AdminDashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdulmoizsheraz/MERN_BLOG-AdminDashboard/issues"
+  },
+  "homepage": "https://github.com/abdulmoizsheraz/MERN_BLOG-AdminDashboard#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
