@@ -21,5 +21,3 @@ Thumbs.db
 
 # Ignore VSCode settings (optional)
 .vscode/
-
-vercel.json
