@@ -5,8 +5,7 @@ const dotenv =require("dotenv") // need to install
 const bodypraser=require("body-parser") // same
 const fileupload=require("express-fileupload"); // same
 const errorMiddleware=require("./middleware/error")  // Todo
-dotenv.config({path:'backend/config/config.env'})    // Todo
-
+dotenv.config({path:'config/config.env'})    
 const cookieParser=require("cookie-parser");
 app.use(cookieParser());
 app.use(express.json());
@@ -21,7 +20,7 @@ app.use(fileupload());
 const User=require("./routes/UserRoutes");
 const Blog =require("./routes/BlogRoutes");
 app.use("/api",User);
-app.use("/api","Blog");
+app.use("/api",Blog);
 
 app.use(errorMiddleware); // add a middleware here
  module.exports=app;
