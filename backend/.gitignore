@@ -21,3 +21,5 @@ Thumbs.db
 
 # Ignore VSCode settings (optional)
 .vscode/
+config/config.env
+

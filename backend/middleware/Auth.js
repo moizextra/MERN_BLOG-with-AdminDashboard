@@ -1,9 +1,9 @@
-// const ErrorHander=require("../utils/errorhandler")
+const ErrorHander=require("../utils/errorhandler")
 const User=require("../models/UserModel")
 const jwt=require("jsonwebtoken")
 exports.IsAuthenticated=async(req,res,next)=>{
     try{
-        const {token}=req.cookies 
+        const {token}=req.cookies;
         if(!token){
             return next(new ErrorHander("UnAuthorized Access",401))
         }
