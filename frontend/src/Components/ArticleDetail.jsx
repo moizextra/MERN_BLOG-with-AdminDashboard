@@ -3,10 +3,11 @@ import {BsFacebook} from "react-icons/bs"
 import {AiFillTwitterCircle} from "react-icons/ai"
 import ReadNext from './ReadNext'
 import NewsLetter from './NewsLetter'
+import Hero from './Hero'
 const ArticleDetail = () => {
   return (
     <>
-   
+<Hero/>
     <div className='flex flex-col justify-center items-center'>
 <div class="bg-gray-100 p-4 rounded-lg shadow-md">
     <div class="flex items-center justify-between">

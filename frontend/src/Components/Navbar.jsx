@@ -1,10 +1,11 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import {BsFillPenFill} from "react-icons/bs"
 function Navbar() {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-6 border-b-4 border-yellow-500">
     <div className="flex items-center flex-shrink-0 text-white mr-6">
-      <span className="font-bold text-xl tracking-tight">BlogNode</span> 
+      <Link  to="/" className="font-bold text-xl tracking-tight">BlogNode</Link> 
     </div>
   
     <div className="block lg:hidden">
@@ -26,9 +27,11 @@ function Navbar() {
         </a>
       </div>
     
-      <div className="text-right">
-        <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0 mr-2">Login</a>
-        <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0 ">Signup</a>
+      <div className="text-right flex justify-center items-center">
+        <Link to={"/auth"} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0 mr-2">Login</Link>
+        <Link to={"/auth"} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0 mr-2">Signup</Link>
+      
+        <Link to="/create" className=" mx-2 flex justify-center  w-24 text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0 "><span className='mx-2'>Write</span> <BsFillPenFill/> </Link>
       </div>
     </div>
   
