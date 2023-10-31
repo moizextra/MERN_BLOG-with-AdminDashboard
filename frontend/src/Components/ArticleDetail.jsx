@@ -4,6 +4,7 @@ import {AiFillTwitterCircle} from "react-icons/ai"
 import ReadNext from './ReadNext'
 import NewsLetter from './NewsLetter'
 import Hero from './Hero'
+import Comment from './Comment'
 const ArticleDetail = () => {
   return (
     <>
@@ -46,6 +47,7 @@ const ArticleDetail = () => {
       <p className='leading-9 m-4 text-center'>Tags:product design,culture,development</p>
     </div>
     </div>
+    <Comment/>
     <ReadNext/>
     <NewsLetter/>
     </>
