@@ -7,12 +7,13 @@ const  Features =require("../utils/features")
 exports.createBlog = async (req, res,next) => {
       try {
       req.body.author = req.user._id;                     
-      const { title, content, category, tags } = req.body;
+      const { title, content, category, tags,coverimage } = req.body;
       const blog = new Blog({
       title,
       content,
       category,
       tags,
+      coverimage
     });
 
     await blog.save();
@@ -43,7 +44,6 @@ exports.createBlog = async (req, res,next) => {
           resultperpage,
       });
   
-      res.status(200).json(Blogs);
     } catch (err) {
       console.error(err);
       res.status(500).json({error: 'Error getting Blogs'});

@@ -57,10 +57,7 @@ exports.LoginUser = async (req, res, next) => {
 
         // Password is correct, generate and send a token
         sendGeneratedToken(user, 200, res);
-        res.status(200).json({
-            success: true,
-            user,
-        })
+      
     } catch (error) {
         return next(new ErrorHandler(error.message, 500));
     }

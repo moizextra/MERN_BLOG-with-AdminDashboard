@@ -20,7 +20,7 @@ function App() {
   <Navbar/>
   <Routes>
   <Route exact path="/" element={<Articles />} />
-  <Route exact path="/articleDetail" element={<ArticleDetail />} />
+  <Route exact path="/article/:id" element={<ArticleDetail />} />
   {/* This would be Protected Route */}
   <Route exact path="/create" element={<Workspace />} />
   <Route exact path="/auth" element={<LoginSignupPage />} />

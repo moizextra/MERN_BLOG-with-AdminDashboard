@@ -31,6 +31,16 @@ required:[true,"Enter the Blog Category"]
     type: Number,
     default: 0, 
   },
+  coverimage:{
+    public_id:{
+        type:String,
+        required:true
+    },
+    url:{
+        type:String,
+        required:true
+    }
+  },
   createdAt: {
     type: Date,
     default: Date.now, 
