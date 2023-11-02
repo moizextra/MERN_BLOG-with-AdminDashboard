@@ -11,8 +11,8 @@ const {
 
 router.post("/content/create", IsAuthenticated, createBlog);
 router.get("/content", getBlogs);
-router.get("/content/:contentId", getBlogById);
-router.put("/content/:contentId", updateBlog);
-router.delete("/content/:contentId", deleteBlog);
+router.get("/content/:id", getBlogById);
+router.put("/content/:id", updateBlog);
+router.delete("/content/:id", deleteBlog);
 
 module.exports = router;

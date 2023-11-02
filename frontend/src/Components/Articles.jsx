@@ -8,7 +8,8 @@ const Articles = () => {
   const Blogs=useSelector((state)=>state.Blog.Blogs);
 useEffect(() => {
 dispatch(getBlogs());
-},[])
+},[dispatch])
+
   return (
     <>
     <Hero/>

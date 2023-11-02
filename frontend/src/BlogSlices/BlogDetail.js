@@ -13,11 +13,12 @@ const blogslice = createSlice({
   name: 'Blog',
   initialState: {
     isLoading: false,
-  
+  BlogDetails:null
   },
   extraReducers: (builder) => {
     builder.addCase(getBlogsDetails.fulfilled, (state, action) => {
-  console.log(action.payload);
+      console.log(action.payload);
+      state.BlogDetails = action.payload;
     });
     builder.addCase(getBlogsDetails.pending, (state, action) => {
     

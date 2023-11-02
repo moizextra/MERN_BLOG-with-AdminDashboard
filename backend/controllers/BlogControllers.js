@@ -53,7 +53,6 @@ exports.createBlog = async (req, res,next) => {
   exports.getBlogById = async (req, res, next) => {
     try {
       const blog = await Blog.findById(req.params.id);
-  
       if (!blog) {
         return next(new ErrorHandler('Blog not found', 404));
       }
