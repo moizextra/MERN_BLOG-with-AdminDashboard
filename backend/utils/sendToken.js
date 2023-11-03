@@ -12,16 +12,15 @@ const sendGeneratedToken = (user, statusCode, res) => {
     };
 
     res.cookie("token", token,
-    //  {
-    //     expires: new Date(
-    //         Date.now() + 60 * 24 * 60 * 60 * 1000 // Token expiration time (in milliseconds)
-    //     ),
-    //     httpOnly: true,
-    //     secure: true,             // Ensure the cookie is sent only over HTTPS (recommended for production)
-    //     sameSite: "strict",       // Restrict cookie to same-site requests only
-    //     path: "/",                // Path where the cookie is accessible (root path)
-    // }
-    cookieOptions,
+     {
+        expires: new Date(
+            Date.now() + 60 * 24 * 60 * 60 * 1000 // Token expiration time (in milliseconds)
+        ),
+        httpOnly: true,
+        secure: true,             // Ensure the cookie is sent only over HTTPS (recommended for production)
+        sameSite: "strict",       // Restrict cookie to same-site requests only
+        path: "/",                // Path where the cookie is accessible (root path)
+    }
     
     ).status(statusCode).json({
         success: true,

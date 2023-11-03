@@ -25,5 +25,4 @@ app.use("/api",Blog);
 app.use(errorMiddleware); // add a middleware here
  module.exports=app;
 
- // unhandled promise rejection
  

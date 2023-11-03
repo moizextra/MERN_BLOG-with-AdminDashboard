@@ -1,33 +1,29 @@
 const ErrorHandler = require('../utils/errorhandler');
 const User = require('../models/UserModel');
-// const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary');
 const sendGeneratedToken = require('../utils/sendToken');
 const crypto = require('crypto');
 const sendEmail = require('../utils/sendemail');
 // Register a User
 exports.registerUser = async (req, res, next) => {
     try {
-        // const mycloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        //     folder: 'avatars',
-        //     width: 150,
-        //     crop: 'scale',
-        // });
+        const mycloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+            folder: 'avatars',
+            width: 150,
+            crop: 'scale',
+        });
         const { name, password, email } = req.body;
         const user = await User.create({
             name,
             email,
             password,
             avatar: {
-                public_id: "mycloud.public_id",
-                url: "mycloud.secure_url",
+                public_id: mycloud.public_id,
+                url: mycloud.secure_url,
             },
         });
-        res.status(201).json({
-            success: true,
-            user,
-        })
-        // getting token by running method we have defined in jwt
-        sendGeneratedToken(user, 200, res);
+    
+        sendGeneratedToken(user, 201, res);
     } catch (error) {
         return next(new ErrorHandler(error.message, 500));
     }
