@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const adduser = createAsyncThunk('adduser', async (userdata) => {
-
+export const adduser = createAsyncThunk('adduser', async (userdata, thunkAPI) => {
   const url = `${import.meta.env.VITE_BASE_URL}/api/login`;
   try {
     const response = await axios.post(url, userdata, {
@@ -12,15 +11,19 @@ export const adduser = createAsyncThunk('adduser', async (userdata) => {
       },
     });
 
-    if (response.status !== 200) {
-      throw new Error('Failed To Add User');
-    }
-
     return response.data;
   } catch (error) {
+    if (error.response) {
+      if (error.response.status === 401) {
+        return thunkAPI.rejectWithValue('Invalid email and password');
+      } else if (error.response.status === 404) {
+        return thunkAPI.rejectWithValue('Account not Found Signup Instead !');
+      }
+    }
     throw error;
   }
 });
+
 
 export const loadUser = createAsyncThunk('loadUser', async () => {
   const url = `${import.meta.env.VITE_BASE_URL}/api/me`;
@@ -79,7 +82,6 @@ const userslice = createSlice({
       state.isAutheticated = true;
       state.userData = action.payload;
       state.error = null;
-      state.token = action.payload.token;
     });
     builder.addCase(adduser.pending, (state, action) => {
       state.isLoading = true;
@@ -87,8 +89,9 @@ const userslice = createSlice({
     });
     builder.addCase(adduser.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      state.error = action.payload || 'An error occurred'; 
     });
+    
     builder.addCase(loadUser.fulfilled, (state, action) => {
       state.isLoading = false;
       state.message = 'Loaded User Successfully!';

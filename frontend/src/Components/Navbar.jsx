@@ -53,7 +53,7 @@ function Navbar() {
          {!isAuthenticated &&  <Link to={"/auth"} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0 mr-2">Login</Link>
       }
       {!isAuthenticated &&  <Link to={"/auth"} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0">Register</Link>}
-      {isAuthenticated &&  <button  className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0">Logout --></button>}
+      {isAuthenticated &&  <button  className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0">Logout</button>}
 
           <Link to="/create" className="mx-2 flex justify-center w-24 text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0">
             <span className='mx-2'>Write</span> <BsFillPenFill />

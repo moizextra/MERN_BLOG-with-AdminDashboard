@@ -3,6 +3,8 @@ import Loading from './Loading';
 import { RegisterUser } from '../UserSlices/Signup';
 import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate} from "react-router-dom"
+import { adduser } from '../UserSlices';
+import Alert from '@mui/material/Alert';
 const LoginSignupPage = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate();
@@ -13,6 +15,8 @@ const LoginSignupPage = () => {
   const [password, setPassword] = useState('');
   const isLoading=useSelector((state)=>state.UserSignup.isLoading);
   const isAuthenticated=useSelector((state)=>state.UserSignup.isAuthenticated);
+  const isAuthenticatedG=useSelector((state)=>state.User.isAuthenticated);
+  const error=useSelector((state)=>state.User.error)
   const switchToLogin = () => {
     setActiveTab('login');
   };
@@ -23,7 +27,10 @@ const LoginSignupPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Handle login logic here
+    dispatch(adduser({email,password}))
+    if(isAuthenticatedG){
+      navigate("/");
+    }
   };
   const handleChange = (e) => {
     if(e.target.name == "name"){
@@ -63,6 +70,10 @@ if(isLoading){
   return <Loading/>
 }
   return (
+    <>
+{
+  error && <Alert severity="error">{error}</Alert>
+}
     <div className="m-10 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
         <div className="flex items-center justify-between mb-4">
@@ -92,6 +103,8 @@ if(isLoading){
                 type="email"
                 className="w-full p-2 border rounded-lg"
                 placeholder="Email"
+                value={email}
+                onChange={(e)=>{setEmail(e.target.value)}}
               />
             </div>
             <div className="mb-4">
@@ -100,6 +113,8 @@ if(isLoading){
                 type="password"
                 className="w-full p-2 border rounded-lg"
                 placeholder="Password"
+                value={password}
+                onChange={(e)=>{setPassword(e.target.value)}}
               />
             </div>
             <button
@@ -184,6 +199,7 @@ if(isLoading){
         )}
       </div>
     </div>
+    </>
   );
 };
 

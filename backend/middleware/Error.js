@@ -1,7 +1,7 @@
 // const ErrorHander = require("../utils/errorhandler");
 
 module.exports = (err, req, res, next) => {
-  err.statusCode = err.statusCode || 500;
+  err.statuscode = err.statuscode || 500;
   err.message = err.message || "Internal Server Error";
 
   // Handle specific error cases
@@ -19,7 +19,7 @@ module.exports = (err, req, res, next) => {
   }
   
   // Now, send the error response with the appropriate status code and message
-  res.status(err.statusCode).json({
+  res.status(err.statuscode).json({
     success: false,
     message: err.stack
   });

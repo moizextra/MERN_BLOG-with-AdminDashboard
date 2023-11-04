@@ -34,14 +34,10 @@ function App() {
             <Workspace />
           </ProtectedRoute>
         } />
-
-
         <Route
-          path="/auth"
+         exact path="/auth"
           element={
-            <ProtectedRoute >
               <LoginSignupPage />
-            </ProtectedRoute>
           }
         />
 
