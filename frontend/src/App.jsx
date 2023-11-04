@@ -1,7 +1,7 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './Components/Navbar'
 import Workspace from './Components/Workspace';
-import {useDispatch,useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { loadUser } from './UserSlices';
 import './App.css'
 import {
@@ -14,26 +14,40 @@ import Articles from './Components/Articles'
 import Footer from './Components/Footer'
 import ArticleDetail from './Components/ArticleDetail';
 import LoginSignupPage from './Components/LoginSignup';
+import ProtectedRoute from './Components/Routes/ProtectedRoute';
 
 function App() {
-  const dispatch=useDispatch();
-useEffect(() => {
-dispatch(loadUser());
-}, [])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [])
 
   return (
-  <Router>
-  <Navbar/>
-  <Routes>
-  <Route exact path="/" element={<Articles />} />
-  <Route exact path="/article/:id" element={<ArticleDetail />} />
-  {/* This would be Protected Route */}
-  <Route exact path="/create" element={<Workspace />} />
-  <Route exact path="/auth" element={<LoginSignupPage />} />
-  
-  </Routes>
-  <Footer/>
-  </Router>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Articles />} />
+        <Route exact path="/article/:id" element={<ArticleDetail />} />
+        {/* This would be Protected Route */}
+        <Route exact path="/create" element={
+          <ProtectedRoute>
+            <Workspace />
+          </ProtectedRoute>
+        } />
+
+
+        <Route
+          path="/auth"
+          element={
+            <ProtectedRoute >
+              <LoginSignupPage />
+            </ProtectedRoute>
+          }
+        />
+
+      </Routes>
+      <Footer />
+    </Router>
   )
 }
 

@@ -21,6 +21,9 @@ const User=require("./routes/UserRoutes");
 const Blog =require("./routes/BlogRoutes");
 app.use("/api",User);
 app.use("/api",Blog);
+app.get('/', (req, res) => {
+    res.send('Backend is working!')
+  })
 
 app.use(errorMiddleware); // add a middleware here
  module.exports=app;
