@@ -7,20 +7,11 @@ const sendEmail = require('../utils/sendemail');
 // Register a User
 exports.registerUser = async (req, res, next) => {
     try {
-        const mycloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-            folder: 'avatars',
-            width: 150,
-            crop: 'scale',
-        });
         const { name, password, email } = req.body;
         const user = await User.create({
             name,
             email,
             password,
-            avatar: {
-                public_id: mycloud.public_id,
-                url: mycloud.secure_url,
-            },
         });
     
         sendGeneratedToken(user, 201, res);

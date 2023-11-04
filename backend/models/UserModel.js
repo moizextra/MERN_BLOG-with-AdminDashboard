@@ -24,17 +24,7 @@ const UserSchema = new Schema({
         required: [true, "Please Enter Your Email"],
         validate: [validator.isEmail, "Please Enter a valid Email"],
       },
-    avatar: {
-        public_id: {
-            type: String,
-            required: true
-        },
-        url: {
-            type: String,
-            required: true
 
-        }
-    },
     role: {
         type: String,
         default: "user"

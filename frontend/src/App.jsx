@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Navbar from './Components/Navbar'
 import Workspace from './Components/Workspace';
+import {useDispatch,useSelector} from "react-redux"
+import { loadUser } from './UserSlices';
 import './App.css'
 import {
   BrowserRouter as Router,
@@ -14,6 +16,10 @@ import ArticleDetail from './Components/ArticleDetail';
 import LoginSignupPage from './Components/LoginSignup';
 
 function App() {
+  const dispatch=useDispatch();
+useEffect(() => {
+dispatch(loadUser());
+}, [])
 
   return (
   <Router>

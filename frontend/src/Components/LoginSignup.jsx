@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import Loading from './Loading';
 import { RegisterUser } from '../UserSlices/Signup';
 import { useDispatch, useSelector } from 'react-redux';
+import {useNavigate} from "react-router-dom"
 const LoginSignupPage = () => {
   const dispatch=useDispatch();
+  const navigate=useNavigate();
   const [activeTab, setActiveTab] = useState('login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState('');
   const [password, setPassword] = useState('');
-  const isLoading=useSelector((state)=>state.UserSignup.isLoading)
+  const isLoading=useSelector((state)=>state.UserSignup.isLoading);
+  const isAuthenticated=useSelector((state)=>state.UserSignup.isAuthenticated);
   const switchToLogin = () => {
     setActiveTab('login');
   };
@@ -52,6 +55,9 @@ const LoginSignupPage = () => {
       avatar:avatar
     }
     dispatch(RegisterUser(Userdata));
+    if(isAuthenticated){
+     navigate("/");
+    }
   };
 if(isLoading){
   return <Loading/>
